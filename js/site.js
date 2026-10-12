@@ -92,7 +92,8 @@
     ti.appendChild(s);
   }
 
-  /* enquiry form: posts JSON to the endpoint named on the form (data-endpoint) */
+  /* enquiry form: posts JSON to the enquiry back end (hosted with the Moinhos Velhos booking server) */
+  const ENQUIRY_ENDPOINT = "https://book.moinhos-velhos.com/api/cyl/enquiry";
   var form = doc.querySelector("form[data-endpoint]");
   if (form) {
     var errBox = null, submit = form.querySelector('button[type="submit"]'), label = submit && submit.firstChild;
@@ -104,7 +105,7 @@
       data.newsletter = data.newsletter === "on";
       submit.disabled = true; var orig = label.textContent; label.textContent = "Sending…";
       if (errBox) errBox.remove();
-      fetch(form.getAttribute("data-endpoint"), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) })
+      fetch(ENQUIRY_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) })
         .then(function (r) { return r.ok ? r : r.json().catch(function () { return {}; }).then(function (j) { throw new Error(j.error || "Something went wrong — please email info@creativewellness.co.uk or call +44 7815 837679."); }); })
         .then(function () {
           var ok = doc.getElementById("enquiry-sent");
