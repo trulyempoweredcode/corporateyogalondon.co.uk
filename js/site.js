@@ -93,7 +93,7 @@
   }
 
   /* enquiry form: posts JSON to the enquiry back end (hosted with the Moinhos Velhos booking server) */
-  const ENQUIRY_ENDPOINT = "https://book.moinhos-velhos.com/api/cyl/enquiry";
+  const ENQUIRY_ENDPOINT = "https://domain7af2ff.stackstaging.com/book/public/api/cyl/enquiry";   /* temporary (14-10-2026) until book.moinhos-velhos.com has a certificate */
   var form = doc.querySelector("form[data-endpoint]");
   if (form) {
     var errBox = null, submit = form.querySelector('button[type="submit"]'), label = submit && submit.firstChild;
